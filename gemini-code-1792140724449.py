@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
+from pathlib import Path
 
 
 def export_all_patches_to_file(
@@ -66,5 +67,9 @@ def export_all_patches_to_file(
     print(f"SUCCESS! Open '{output_txt}' to inspect every single value.")
 
 
-# Execute the export
-# export_all_patches_to_file("image_d79821.png")
+if __name__ == "__main__":
+    image_path = Path(__file__).with_name(
+        "846910042_122199315722399604_3034258827721968700_n.jpg"
+    )
+    output_path = Path(__file__).with_name("all_patches_full_dump.txt")
+    export_all_patches_to_file(str(image_path), str(output_path))
